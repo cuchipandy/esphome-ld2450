@@ -1,9 +1,33 @@
-external_components:
-  - source:
-      type: git
-      url: https://github.com/uncle-yura/esphome-ld2450
-      ref: master
-    components: [ ld2450 ]
+esphome:
+  name: ld2450
+  friendly_name: ld2450
+
+esp32:
+  board: wemos_d1_mini32
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "QT3oipYQSrYkQXuMcyNnGtM9w72EEVcrpGrF16WZ2Nc="
+
+ota:
+  password: "727fd6f3bff79cbbe3522c63d3d5ce8b"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Ld2450 Fallback Hotspot"
+    password: "QadFck3b1hRQ"
+
+captive_portal:
 
 uart:
   id: uart_bus
@@ -153,3 +177,4 @@ sensor:
 
     resolution:
       name: "R2"
+    
